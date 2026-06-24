@@ -15,11 +15,10 @@ services:
       - key: COLLEGE_ROLL_NUMBER
         value: 2310990847
 
-  # Frontend Static Site
+  # Frontend Static Site (plan key removed)
   - type: web
     name: hierarchy-analyzer-dashboard
     runtime: static
-    plan: free
     rootDir: frontend
     buildCommand: npm run build
     staticPublishPath: dist
