@@ -15,14 +15,14 @@ services:
       - key: COLLEGE_ROLL_NUMBER
         value: 2310990847
 
-  # Frontend Static Site
-  - type: static
+  # Frontend Static Site (type must be 'web' with 'runtime: static')
+  - type: web
     name: hierarchy-analyzer-dashboard
-    env: static
+    runtime: static
     plan: free
     rootDir: frontend
     buildCommand: npm run build
-    publishDir: dist
+    publishPath: dist
     envVars:
       - key: VITE_API_URL
         fromService:
