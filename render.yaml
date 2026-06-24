@@ -1,0 +1,31 @@
+services:
+  # Backend Express API Service
+  - type: web
+    name: hierarchy-analyzer-api
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: USER_ID
+        value: parthmunjal_12072005
+      - key: EMAIL_ID
+        value: parth0847.be23@chitkara.edu.in
+      - key: COLLEGE_ROLL_NUMBER
+        value: 2310990847
+
+  # Frontend Static Site
+  - type: static
+    name: hierarchy-analyzer-dashboard
+    env: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm run build
+    publishDir: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: hierarchy-analyzer-api
+          property: host
