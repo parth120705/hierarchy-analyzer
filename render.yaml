@@ -2,7 +2,7 @@ services:
   # Backend Express API Service
   - type: web
     name: hierarchy-analyzer-api
-    env: node
+    runtime: node
     plan: free
     rootDir: backend
     buildCommand: npm install
@@ -15,7 +15,7 @@ services:
       - key: COLLEGE_ROLL_NUMBER
         value: 2310990847
 
-  # Frontend Static Site (type must be 'web' with 'runtime: static')
+  # Frontend Static Site
   - type: web
     name: hierarchy-analyzer-dashboard
     runtime: static
@@ -25,7 +25,4 @@ services:
     publishPath: dist
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: hierarchy-analyzer-api
-          property: host
+        sync: false
